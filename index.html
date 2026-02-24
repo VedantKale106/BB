@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery Bite's Cake Shop</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&family=Mukta:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            900: '#831843',
+                            choc: '#3b2014', // Deep chocolate brown
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        cursive: ['Pacifico', 'cursive'],
+                        marathi: ['Mukta', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        .scale-on-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .scale-on-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Image Overlay */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(59, 32, 20, 0.6), rgba(59, 32, 20, 0.9));
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Pulse for CTA */
+        @keyframes softPulse {
+            0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(236, 72, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+        }
+        .btn-pulse {
+            animation: softPulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-gray-800 font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[80vh] flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Delicious chocolate cake" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto animate-on-scroll">
+            <div class="inline-block px-4 py-1 rounded-full bg-brand-500/20 border border-brand-500/50 backdrop-blur-sm text-brand-100 text-sm font-semibold tracking-wider mb-6 floating">
+                <i class="fas fa-star text-yellow-400 mr-1"></i> 5.0 (117 Reviews)
+            </div>
+            
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-cursive text-white drop-shadow-lg mb-2">
+                Bakery Bite's
+            </h1>
+            <h2 class="text-2xl sm:text-3xl font-light tracking-widest text-brand-100 mb-4 uppercase">
+                Cake Shop
+            </h2>
+            <h3 class="text-xl sm:text-2xl font-marathi text-gray-300 font-medium mb-8">
+                बेकरी बीते'स केक शॉप
+            </h3>
+
+            <div class="flex flex-wrap justify-center gap-4 text-sm sm:text-base mb-10">
+                <span class="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-md">
+                    <i class="fas fa-shopping-bag mr-2 text-brand-500"></i> Takeaway
+                </span>
+                <span class="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-md">
+                    <i class="fas fa-motorcycle mr-2 text-brand-500"></i> Delivery
+                </span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="tel:09766606295" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-full font-semibold transition-all transform hover:scale-105 btn-pulse shadow-lg flex items-center justify-center">
+                    <i class="fas fa-phone-alt mr-2"></i> 097666 06295
+                </a>
+                <a href="#directions" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-100 text-brand-900 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg flex items-center justify-center">
+                    <i class="fas fa-directions mr-2"></i> Get Directions
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom Wave -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto text-brand-50 fill-current">
+                <path d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,218.7C672,213,768,171,864,165.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Quick Info Actions Bar -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 relative z-20 -mt-10 mb-16 animate-on-scroll delay-100">
+        <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-6 grid grid-cols-2 md:grid-cols-4 gap-4 divide-x divide-gray-100">
+            <button class="flex flex-col items-center p-2 text-gray-600 hover:text-brand-600 transition group" onclick="alert('Saving to your favorites!')">
+                <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center mb-2 group-hover:bg-brand-100 transition">
+                    <i class="far fa-bookmark text-xl"></i>
+                </div>
+                <span class="text-sm font-medium">Save</span>
+            </button>
+            <button class="flex flex-col items-center p-2 text-gray-600 hover:text-brand-600 transition group">
+                <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center mb-2 group-hover:bg-brand-100 transition">
+                    <i class="fas fa-location-arrow text-xl"></i>
+                </div>
+                <span class="text-sm font-medium">Nearby</span>
+            </button>
+            <button class="flex flex-col items-center p-2 text-gray-600 hover:text-brand-600 transition group" onclick="alert('Sent to your phone!')">
+                <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center mb-2 group-hover:bg-brand-100 transition">
+                    <i class="fas fa-mobile-alt text-xl"></i>
+                </div>
+                <span class="text-sm font-medium">Send to Phone</span>
+            </button>
+            <button class="flex flex-col items-center p-2 text-gray-600 hover:text-brand-600 transition group" onclick="alert('Link copied to share!')">
+                <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center mb-2 group-hover:bg-brand-100 transition">
+                    <i class="fas fa-share-alt text-xl"></i>
+                </div>
+                <span class="text-sm font-medium">Share</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Location & Overview -->
+    <section id="directions" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-on-scroll">
+                <div class="flex items-center gap-3 mb-6">
+                    <h2 class="text-3xl font-bold text-gray-900 font-sans">About Us</h2>
+                    <div class="h-1 flex-grow bg-gradient-to-r from-brand-500 to-transparent rounded"></div>
+                </div>
+                
+                <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                    Welcome to Bakery Bite's Cake Shop, Junnar's premier destination for delicious, high-quality, and hygienic cakes. Whether it's a birthday, wedding, or just a sweet craving, our expert chefs create custom theme cakes and pastries that look fabulous and taste amazing. 
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 flex-shrink-0 mt-1">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900 text-lg">Location</h4>
+                            <p class="text-gray-600 mt-1">Shivneri Road, Near New Bus Stand Junnar,<br>Opposite Bank of India,<br>Pune, Maharashtra 410502</p>
+                            <p class="text-sm text-gray-400 mt-1 font-mono">Plus Code: 6V49+7V Junnar, Maharashtra</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 flex-shrink-0 mt-1">
+                            <i class="fas fa-clock text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900 text-lg">Highlights</h4>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 shadow-sm">Birthday Cakes</span>
+                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 shadow-sm">Wedding Cakes</span>
+                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 shadow-sm">Custom Themes</span>
+                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-600 shadow-sm">100% Hygienic</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Grid -->
+            <div class="grid grid-cols-2 gap-4 animate-on-scroll delay-200">
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chocolate Cake" class="w-full h-48 object-cover rounded-2xl shadow-md scale-on-hover">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pastries" class="w-full h-64 object-cover rounded-2xl shadow-md scale-on-hover">
+                </div>
+                <div class="space-y-4 pt-8">
+                    <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Strawberry Cake" class="w-full h-64 object-cover rounded-2xl shadow-md scale-on-hover">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cupcakes" class="w-full h-48 object-cover rounded-2xl shadow-md scale-on-hover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="bg-white py-16 mt-12 relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-brand-50 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-orange-50 rounded-full blur-3xl opacity-50"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-4xl font-cursive text-brand-600 mb-2">Customer Reviews</h2>
+                <div class="flex items-center justify-center gap-2 text-2xl mb-2">
+                    <span class="font-bold text-gray-900">5.0</span>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-500">Based on 117 ratings</p>
+                
+                <div class="flex flex-wrap justify-center gap-2 mt-6">
+                    <span class="px-3 py-1 bg-brand-50 text-brand-700 rounded-full text-xs font-semibold">design (5)</span>
+                    <span class="px-3 py-1 bg-brand-50 text-brand-700 rounded-full text-xs font-semibold">hygienic (5)</span>
+                    <span class="px-3 py-1 bg-brand-50 text-brand-700 rounded-full text-xs font-semibold">quality (3)</span>
+                    <span class="px-3 py-1 bg-brand-50 text-brand-700 rounded-full text-xs font-semibold">chef (2)</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-gray-50 p-6 rounded-3xl shadow-sm border border-gray-100 scale-on-hover animate-on-scroll delay-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-brand-200 rounded-full flex items-center justify-center text-brand-700 font-bold">DP</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Dipali Pathare</h4>
+                                    <p class="text-xs text-gray-500">4 photos</p>
+                                </div>
+                            </div>
+                            <i class="fab fa-google text-gray-400"></i>
+                        </div>
+                        <div class="flex text-yellow-400 text-sm mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            "Nice cakes and theme cake design is osm. The taste of the cake is very good, all my cake orders are in bakery bites cake shop junnar 😋😍"
+                        </p>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 mt-4">
+                        <p class="text-xs font-semibold text-brand-600 mb-1"><i class="fas fa-reply mr-1"></i> Response from owner</p>
+                        <p class="text-xs text-gray-500">Thank you so much</p>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-gray-50 p-6 rounded-3xl shadow-sm border border-gray-100 scale-on-hover animate-on-scroll delay-200 flex flex-col justify-between relative">
+                    <!-- Highlight Badge -->
+                    <div class="absolute -top-3 right-6 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                        Featured
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-orange-200 rounded-full flex items-center justify-center text-orange-700 font-bold">NI</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Naz Inamdar</h4>
+                                    <p class="text-xs text-gray-500">1 review</p>
+                                </div>
+                            </div>
+                            <i class="fab fa-google text-gray-400"></i>
+                        </div>
+                        <div class="flex text-yellow-400 text-sm mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            "Cake was amazing Thank you so much RANJIT sr for the lovely cake it was delicious my fav chocolate flavour, Rasmalai flavour👌😋 I would like to thank you for the most amazing. Not only it looked fabulous and perfectly fitted... test is amazing"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-gray-50 p-6 rounded-3xl shadow-sm border border-gray-100 scale-on-hover animate-on-scroll delay-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 font-bold">PB</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Pratiksha Bele</h4>
+                                    <p class="text-xs text-gray-500">2 photos</p>
+                                </div>
+                            </div>
+                            <i class="fab fa-google text-gray-400"></i>
+                        </div>
+                        <div class="flex text-yellow-400 text-sm mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            "Cakes are really nice. All the birthday cakes in my house are from bakery bites.My daughter's 5th birthday had a very nice cake and the taste was very osm 😋."
+                        </p>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-gray-100 mt-4">
+                        <p class="text-xs font-semibold text-brand-600 mb-1"><i class="fas fa-reply mr-1"></i> Response from owner</p>
+                        <p class="text-xs text-gray-500">Thank you so much ☺️</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 animate-on-scroll">
+                <button class="px-6 py-3 border-2 border-brand-600 text-brand-600 font-semibold rounded-full hover:bg-brand-600 hover:text-white transition-colors duration-300">
+                    Read all 117 reviews <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-choc text-white py-12 border-t-4 border-brand-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
+            <h2 class="text-3xl font-cursive mb-4 text-brand-100">Bakery Bite's</h2>
+            <p class="text-gray-400 text-sm mb-6 max-w-md mx-auto">Bringing joy to your celebrations with our delicious, high-quality, and beautifully crafted cakes in Junnar.</p>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-500 transition-colors">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-500 transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-500 transition-colors">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Bakery Bite's Cake Shop. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">
+                    <a href="suggest" class="hover:text-white transition flex items-center"><i class="fas fa-pen mr-2 text-xs"></i> Suggest an edit</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Action Button (Call) -->
+    <a href="tel:09766606295" class="fixed bottom-6 right-6 w-14 h-14 bg-brand-500 text-white rounded-full flex items-center justify-center shadow-2xl z-50 md:hidden btn-pulse">
+        <i class="fas fa-phone-alt text-xl"></i>
+    </a>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
+                observer.observe(elem);
+            });
+        });
+    </script>
+</body>
+</html>
